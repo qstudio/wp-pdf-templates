@@ -27,7 +27,13 @@ is_dir($upload_dir['basedir'] . '/pdf-cache') && rrmdir($upload_dir['basedir'] .
  * Handles recursive remove.
  */
 function rrmdir($dir) {
-  foreach(glob($dir . '/*') as $file) {
-    if(is_dir($file)) rrmdir($file); else unlink($file);
-  } rmdir($dir);
+    foreach(glob($dir . '/*') as $file) {
+          if(is_dir($file)) rrmdir($file); else unlink($file);
+    } 
+    rmdir($dir);
 }
+
+/**
+ * search and remove all _wp_pdf_templates_title post_meta keys ##
+ */
+delete_post_meta_by_key( '_wp_pdf_templates_title' );
