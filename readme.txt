@@ -3,8 +3,13 @@ Contributors: Zuige, ottok
 Tags: pdf, dompdf, templates, print, seravo
 Donate link: http://seravo.fi/
 Requires at least: 3.8.0
+<<<<<<< HEAD
 Tested up to: 4.1.0
 Stable tag: 1.4.0
+=======
+Tested up to: 4.0
+Stable tag: 1.3.8
+>>>>>>> origin/master
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -77,6 +82,7 @@ DOMPDF needs the proper font files to generate PDF files. There's a font adder u
 
 == Changelog ==
 
+<<<<<<< HEAD
 = 1.4.0 =
 
 * added _wp_pdf_templates_title post_meta key that contains the name of the pdf file for each post
@@ -84,6 +90,8 @@ DOMPDF needs the proper font files to generate PDF files. There's a font adder u
 * added translation .po file
 * Moved plugin to singleton class to allow for easier reading of actions and filters
 
+=======
+>>>>>>> origin/master
 = 1.3.7 =
 * Cookies are now passed as a raw header for a simpler system
 
