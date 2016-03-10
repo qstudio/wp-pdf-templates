@@ -173,7 +173,21 @@ function _init_dompdf_fonts() {
       );
   }
 }
+/**
+ * Use this instead of file_get_contents()
+ */
+function curl_get_contents($url) {
+    $ch = curl_init();
 
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_URL, $url);
+
+    $data = curl_exec($ch);
+    curl_close($ch);
+
+    return $data;
+}
 /**
  * Applies print templates
  */
@@ -240,11 +254,11 @@ function _use_pdf_template() {
       ));
 
       // load the generated html from the template endpoint
-      $html = file_get_contents( $link, false, $context );
+      $html = curl_get_contents( $link );
 
       if( empty( $html ) ) {
-        // sometimes the ssl module just fails, fall back to http insted
-        $html = file_get_contents( str_ireplace( 'https://', 'http://', $link ), false, $context );
+		// sometimes the ssl module just fails, fall back to http insted
+		$html = curl_get_contents( str_ireplace( 'https://', 'http://', $link ) );
       }
 
       // process the html output
@@ -314,8 +328,6 @@ function _process_pdf_template_html($html) {
 
   return $html;
 }
-
-
 /**
  * Handles the PDF Conversion
  */
